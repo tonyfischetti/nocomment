@@ -78,6 +78,7 @@ start_com, end_com = (None, None)
 for key in com_chars:
     if v_file_type in com_chars[key]:
         start_com, end_com = key
+        print start_com, end_com
 
 # if we can find them, break out
 if not start_com:
@@ -88,7 +89,6 @@ if not start_com:
 first_line = vim.current.buffer.mark('<')[0] - 1
 last_line = vim.current.buffer.mark('>')[0]
 
-print start_com
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(current_line, "^\s*$"):
