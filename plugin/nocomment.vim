@@ -37,7 +37,7 @@ if !has('python')
 endif
 
 " check to see it it's already loaded
-if exists("loaded_nocomment_plugin:)
+if exists("loaded_nocomment_plugin")
     finish
 endif
 
