@@ -88,6 +88,7 @@ if not start_com:
 first_line = vim.current.buffer.mark('<')[0] - 1
 last_line = vim.current.buffer.mark('>')[0]
 
+print start_com
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(current_line, "^\s*$"):
