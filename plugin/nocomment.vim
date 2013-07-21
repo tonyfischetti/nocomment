@@ -77,8 +77,8 @@ start_com, end_com = (None, None)
 # find the appropriate comment chars
 for key in com_chars:
     if v_file_type in com_chars[key]:
+        print key
         start_com, end_com = key
-        print start_com, end_com
 
 # if we can find them, break out
 if not start_com:
