@@ -93,8 +93,8 @@ for index in range(first_line, last_line):
     if not re.match(current_line, "^\s*$"):
         if end_com:
             end_com = " " + end_com
-        new_line = start_com + " " + current_line + end_com
-        vim.current.buffer[index] = new_line
+        vim.current.buffer[index] = start_com + " " + current_line + end_com
+
 
 EOF
 
