@@ -30,25 +30,71 @@
 " }}}
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
+" check if vim has python support
 if !has('python')
     echo "Compiling vim with python support is required to use the plugin"
     finish
 endif
 
+" check to see it it's already loaded
+if exists("loaded_nocomment_plugin:)
+    finish
+endif
 
-function! CommentVisualSelection()
+let loaded_nocomment_plugin = 1
+
+
+" Mappings
+vnoremap <silent> <C-C> :call NCCommentSelection()<CR>
+" vnoremap <silent> <C-X> :call NCUnCommentSelection()<CR>
+
+
+"""
+""" comment selection function
+"""
+function! NCCommentSelection()
 
 python << EOF
 
 import vim
+import sys
 import re
 
+# dictionary holding the start and end comment characters
+# (in a tuple) as a key to lists that contains the vim
+# filetypes that use those comment characters
+com_chars= {("#", ""): ["python", "perl", "ruby"],
+            ("//", ""): ["java", "c", "cpp"],
+            ('"', ""): ["vim"]}
+
+# get filetype of current buffer
+v_file_type = vim.eval("&ft")
+
+# declare the start and end characters that
+# we will be using on the text in the buffer
+start_com, end_com = (None, None)
+
+# find the appropriate comment chars
+for key in com_chars:
+    if v_file_type in com_chars[key]:
+        start_com, end_com = key
+
+# if we can find them, break out
+if not start_com:
+    print "Filetype not supported by this plugin"
+    sys.exit(1)
+
+# get the line numbers flanking the selection
 first_line = vim.current.buffer.mark('<')[0] - 1
 last_line = vim.current.buffer.mark('>')[0]
+
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(current_line, "^\s*$"):
-        vim.current.buffer[index] = "# " + current_line
+        if end_com:
+            end_com = " " + end_com
+        new_line = start_com + " " + current_line + end_com
+        vim.current.buffer[index] = new_line
 
 EOF
 
