@@ -97,7 +97,7 @@ for index in range(first_line, last_line):
     if not re.match(current_line, "^\s*$"):
         leading_ws = re.match("(\s*)\w", current_line)
         if leading_ws:
-            leading_ws = leading_ws.group(1):
+            leading_ws = re.match("(\s*)\w", current_line).group(1):
             if len(leading_ws) < len(min_ws):
                 min_ws = leading_ws
 if min_ws == " "*1000:
