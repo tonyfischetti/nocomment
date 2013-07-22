@@ -17,3 +17,11 @@ vim bundle folder,
 and run the following command
 
     git clone https://github.com/tonyfischetti/nocomment.git
+
+
+Usage
+------------
+To select a block of code to comment/uncomment, use `Shift-V` and use either
+the arrow keys, or better, `j` and `k`, to move up or down. After you're 
+satisfied, press `Control-C` to comment the block, or `Control-X` to
+uncomment it. 

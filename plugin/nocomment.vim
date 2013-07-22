@@ -2,7 +2,7 @@
 " FILE:     plugin/nocomment.vim {{{
 " AUTHOR:   Tony Fischetti <tony.fischetti@gmail.com>
 " WEBSITE:  https://github.com/tonyfischetti/nocomment
-" VERSION:  0.0.1
+" VERSION:  0.1.0
 " LICENSE:
 " nocomment - Vim plugin to easily and nicely comment and uncomment visual
 "             blocks
