@@ -98,6 +98,7 @@ for index in range(first_line, last_line):
         leading_ws = re.match("(\s*)\S", current_line).group(1)
         if len(leading_ws) < min_ws:
             min_ws = leading_ws
+print "!" + min_ws + "!"
 
 
 for index in range(first_line, last_line):
