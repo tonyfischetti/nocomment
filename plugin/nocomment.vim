@@ -95,11 +95,9 @@ min_ws = " "*1000
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(current_line, "^\s*$"):
-        leading_ws = re.match((\s*)\S)
-        if leading_ws:
-            leading_ws = re.match((\s*)\S).group(1)
-            if len(leading_ws) < min_ws:
-                min_ws = leading_ws
+        leading_ws = re.match("(\s*)\S").group(1)
+        if len(leading_ws) < min_ws:
+            min_ws = leading_ws
 
 
 for index in range(first_line, last_line):
