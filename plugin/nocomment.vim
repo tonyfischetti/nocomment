@@ -90,13 +90,23 @@ if not start_com:
 first_line = vim.current.buffer.mark('<')[0] - 1
 last_line = vim.current.buffer.mark('>')[0]
 
+# find line with least amount of whitespace
+min_ws = " "*1000
+for index in range(first_line, last_line):
+    current_line = vim.current.buffer[index]
+    if not re.match(current_line, "^\s*$"):
+        leading_ws = re.match((\s*)\S).group(1)
+        if len(leading_ws) < min_ws:
+            min_ws = leading_ws
+
+
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(current_line, "^\s*$"):
         if end_com:
             end_com = " " + end_com
-        vim.current.buffer[index] = start_com + " " + current_line + end_com
-
+        new_line = min_ws + start_com + " " + current_line + end_com
+        vim.current.buffer[index] = new_line
 
 EOF
 
