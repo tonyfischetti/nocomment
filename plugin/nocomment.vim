@@ -78,7 +78,6 @@ start_com, end_com = (None, None)
 # find the appropriate comment chars
 for key in com_chars:
     if v_file_type in com_chars[key]:
-        print key
         start_com, end_com = key
 
 # if we can find them, break out
@@ -95,7 +94,7 @@ min_ws = " "*1000
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(re.escape(current_line), "^[^I|\s*]$"):
-        print current_line.replace("^I", "\t")
+        print current_line.replace("\^I", "\t")
         leading_ws = re.match(r"([^I|\s*])\S", re.escape(current_line))
         if leading_ws:
             leading_ws = re.match("([^I|\s*])\S", re.escape(current_line)).group(1)
