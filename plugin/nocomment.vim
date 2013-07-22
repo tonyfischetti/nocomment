@@ -94,11 +94,11 @@ last_line = vim.current.buffer.mark('>')[0]
 min_ws = " "*1000
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
-    if not re.match(current_line, "^\s*$"):
-        leading_ws = re.match("(\s*)\S", current_line).group(1)
-        if len(leading_ws) < min_ws:
-            min_ws = leading_ws
-print "!" + min_ws + "!"
+        if not re.match(current_line, "^\s*$"):
+            leading_ws = re.match("(\s*)\w", current_line).group(1)
+            print len(leading_ws)
+            if len(leading_ws) < min_ws:
+                min_ws = leading_ws
 
 
 for index in range(first_line, last_line):
