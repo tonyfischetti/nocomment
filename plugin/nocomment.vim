@@ -94,7 +94,7 @@ min_ws = " "*1000
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(re.escape(current_line), "^\s*$"):
-        print "non empty: " + current_line
+        print "non empty: " + repr(current_line)
         leading_ws = re.match("^(\s*)\S", re.escape(current_line))
         if leading_ws:
             leading_ws = re.match("^(\s*)\S", re.escape(current_line)).group(1)
