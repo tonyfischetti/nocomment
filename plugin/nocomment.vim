@@ -99,7 +99,7 @@ for index in range(first_line, last_line):
         print len(leading_ws)
         if len(leading_ws) < min_ws:
             min_ws = leading_ws
-
+print len(leading_ws)
 
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
