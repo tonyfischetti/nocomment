@@ -105,7 +105,7 @@ for index in range(first_line, last_line):
         if end_com:
             end_com = " " + end_com
         new_line = min_ws + start_com + " "
-        new_line += current_line.strip(min_ws, "", 1) + end_com
+        new_line += current_line.replace(min_ws, "", 1) + end_com
         vim.current.buffer[index] = new_line
 
 EOF
