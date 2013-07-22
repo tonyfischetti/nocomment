@@ -97,9 +97,7 @@ for index in range(first_line, last_line):
     if not re.match(current_line, "^\s*$"):
         leading_ws = re.match("(\s*)\w", current_line).group(1)
         print len(leading_ws)
-        print "About to compare {} with {}".format(len(leading_ws), len(min_ws))
         if len(leading_ws) < len(min_ws):
-            print "{} won".format(len(leading_ws))
             min_ws = leading_ws
 
 for index in range(first_line, last_line):
@@ -107,7 +105,7 @@ for index in range(first_line, last_line):
     if not re.match(current_line, "^\s*$"):
         if end_com:
             end_com = " " + end_com
-        new_line = min_ws + start_com + " " + current_line + end_com
+        new_line = min_ws + start_com + " " + current_line.lstrip() + end_com
         vim.current.buffer[index] = new_line
 
 EOF
