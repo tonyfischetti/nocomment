@@ -94,10 +94,10 @@ min_ws = " "*1000
 for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(re.escape(current_line), "^\s*$"):
-        print repr(current_line)
         leading_ws = re.match(r"(\s*)\S", re.escape(current_line))
         if leading_ws:
             leading_ws = re.match("(\s*)\S", re.escape(current_line)).group(1)
+            print "About to compare !{}! and !{}!".format(repr(leading_ws), repr(min_ws))
             if len(leading_ws) < len(min_ws):
                 min_ws = leading_ws
 print "Min width: {}".format(min_ws)
