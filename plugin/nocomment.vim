@@ -96,7 +96,6 @@ for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(current_line, "^\s*$"):
         leading_ws = re.match("(\s*)\w", current_line).group(1)
-        print len(leading_ws)
         if len(leading_ws) < len(min_ws):
             min_ws = leading_ws
 
@@ -106,7 +105,7 @@ for index in range(first_line, last_line):
         if end_com:
             end_com = " " + end_com
         new_line = min_ws + start_com + " "
-        new_line += current_line.lstrip(min_ws) + end_com
+        new_line += current_line.strip(min_ws, "", 1) + end_com
         vim.current.buffer[index] = new_line
 
 EOF
