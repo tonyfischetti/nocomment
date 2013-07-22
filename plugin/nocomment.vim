@@ -100,6 +100,7 @@ for index in range(first_line, last_line):
             leading_ws = re.match("(\s*)\S", re.escape(current_line)).group(1)
             if len(leading_ws) < len(min_ws):
                 min_ws = leading_ws
+print min_ws
 if min_ws == " "*1000:
     min_ws = None
 
@@ -108,10 +109,11 @@ for index in range(first_line, last_line):
     if not re.match(re.escape(current_line), "^\s*$"):
         if end_com:
             end_com = " " + end_com
-        new_line = min_ws + start_com + " "
         if min_ws:
+            new_line = min_ws + start_com + " "
             new_line += current_line.replace(min_ws, "", 1) + end_com
         else:
+            new_line = start_com + " "
             new_line += current_line + end_com
         vim.current.buffer[index] = new_line
 
