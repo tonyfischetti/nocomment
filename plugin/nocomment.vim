@@ -100,7 +100,7 @@ for index in range(first_line, last_line):
             leading_ws = re.match("(\s*)\S", re.escape(current_line)).group(1)
             if len(leading_ws) < len(min_ws):
                 min_ws = leading_ws
-print min_ws
+print "Min width: {}".format(min_ws)
 if min_ws == " "*1000:
     min_ws = None
 
