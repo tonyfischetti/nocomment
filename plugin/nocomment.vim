@@ -95,9 +95,9 @@ for index in range(first_line, last_line):
     current_line = vim.current.buffer[index]
     if not re.match(re.escape(current_line), "^\s*$"):
         print "non empty: " + current_line
-        leading_ws = re.match(r"(\s*)\S", re.escape(current_line))
+        leading_ws = re.match(r"(\s*)\w", re.escape(current_line))
         if leading_ws:
-            leading_ws = re.match("(\s*)\S", re.escape(current_line)).group(1)
+            leading_ws = re.match("(\s*)\w", re.escape(current_line)).group(1)
             print len(leading_ws)
             if len(leading_ws) < len(min_ws):
                 min_ws = leading_ws
