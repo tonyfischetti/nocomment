@@ -105,7 +105,8 @@ for index in range(first_line, last_line):
     if not re.match(current_line, "^\s*$"):
         if end_com:
             end_com = " " + end_com
-        new_line = min_ws + start_com + " " + current_line.lstrip() + end_com
+        new_line = min_ws + start_com + " "
+        new_line += current_line.lstrip(min_ws) + end_com
         vim.current.buffer[index] = new_line
 
 EOF
