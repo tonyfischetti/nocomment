@@ -45,8 +45,9 @@ let loaded_nocomment_plugin = 1
 
 
 " Mappings
-map <silent> <C-C> :call NCCommentSelection()<CR>
+map <silent> <C-C> :<C-U>call NCCommentSelection()<CR>
 " vnoremap <silent> <C-X> :call NCUnCommentSelection()<CR>
+
 
 
 """
